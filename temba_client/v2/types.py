@@ -156,9 +156,13 @@ class Label(TembaObject):
     uuid = SimpleField()
     name = SimpleField()
     count = IntegerField()
-
-
+    
+    
 class Message(TembaObject):
+    class RulesetRef(TembaObject):
+        uuid = SimpleField()
+        rules = SimpleField()
+        
     id = IntegerField()
     broadcast = IntegerField()
     contact = ObjectField(item_class=ObjectRef)
@@ -173,6 +177,7 @@ class Message(TembaObject):
     created_on = DatetimeField()
     sent_on = DatetimeField()
     modified_on = DatetimeField(optional=True)
+    ruleset = ObjectField(item_class=RulesetRef)
 
 
 class Org(TembaObject):
